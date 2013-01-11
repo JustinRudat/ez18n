@@ -1,110 +1,37 @@
-Ez18n will be at JavaOne 2012
-=============================
-
-[CON11234 - Multidevice Content Display and a Smart Use of Annotation Processing](http://oracleus.activeevents.com/connect/sessionDetail.ww?SESSION_ID=11234)
-
-slides are available
---------------------
-
-[CON11234_baeli_di_guglielmo.pdf](ez18n-slides/javaone-2012/CON11234_baeli_di_guglielmo.pdf?raw=true "CON11234_baeli_di_guglielmo.pdf")
-
-[CON11234_baeli_di_guglielmo.pptx](ez18n-slides/javaone-2012/CON11234_baeli_di_guglielmo.pptx?raw=true "CON11234_baeli_di_guglielmo.pdf")
-
-http://fr.slideshare.net/gdigugli/con11234-baeli-diguglielmo
-
-ez18n
+Ez18n
 =====
 
-apt: 30min (gilles)
--------------------
+Ez18n is a sample project used to demonstrate a modernized way to manage i18n (localisation) in Java.
 
-[ez18n_apt_in_nutshell.pptx](ez18n-slides/ez18n_apt_in_nutshell.pptx?raw=true "ez18n_apt_in_nutshell.pptx")
-
-[ez18n_apt_in_nutshell.pdf](ez18n-slides/ez18n_apt_in_nutshell.pdf?raw=true "ez18n_apt_in_nutshell.pdf")
+It is also a sample projet for Annotation Processing Tool (apt), the JDK built in code generation.
 
 
-* APT qu'est ce que c'est
-* appeler en ligne de commande
-* appeler APT depuis maven
-* l'API javax.tools - hierarchie des classes
-* Processor
-* meta model d'un fichier source java
-* comparaison avec java.lang.reflect
-* limitation par rapport à java.lang.reflect
-* ca sert à quoi ?
-* pattern avec injection - je fais un framework
-* analyse et transformation de code vers des fichiers plats
-* DSL avec des annotations
-* no limit ... attention aux dépendances
-* compilation une ou deux passes ?
-* APT dans mon IDE
+Presentations 
+=============
 
-encoding et gouvernance : i18n, l10n: 30min (dimitri)
------------------------------------------------------
+MarsJug 2012 (Marseille, France)
+--------------------
 
-[ez18n_theorie.pptx](ez18n-slides/ez18n_theorie.pptx?raw=true "ez18n_theorie.pptx")
+ez18n-slides/Jugs2013/SmartAnnotationProcessing_2013_v2.pptx
 
-[ez18n_theorie.pdf](ez18n-slides/ez18n_theorie.pdf?raw=true "ez18n_theorie.pdf")
+JavaOne 2012 (San Francisco, USA)
+--------------------
 
-* ISO-8859-1 Au secours !
-* Téléphone japonais
-* Gruyère international
-* i18n ?
-* i18n ou l10n
-* Le champ d'action
-* Pour le fun: les guillemets
-* i18n en java
-* MessageFormat
-* Démo : Old style i18n
-* Exemples
-* The absolute minimum
-* Le minimum
-* Encodings
-* Idées au passage
-* Des outils
+ez18n-slides/javaone-2012/CON11234_baeli_di_guglielmo.pdf
 
-[pause]
+On slideshare: http://fr.slideshare.net/gdigugli/con11234-baeli-diguglielmo
 
-Pattern APT, plugin maven, gwt:  45min (gilles)
------------------------------------------------
+BreizhCamp 2012 (Rennes, France)
+--------------------
+ez18n-slides/ez18n_apt_in_nutshell.pptx
 
-[ez18n_hands_on.pptx](ez18n-slides/ez18n_hands_on.pptx?raw=true "ez18n_hands_on.pptx")
+ez18n-slides/ez18n_crowdsourcing.pptx
 
-[ez18n_hands_on.pdf](ez18n-slides/ez18n_hands_on.pdf?raw=true "ez18n_hands_on.pdf")
+ez18n-slides/ez18n_hands_on.pptx
 
-* Introduction à i18n avec GWT
-* les ResourceBundle du JDK
-* les MessageFormats du JDK
-* Comment aligner les 2 mondes ?
-* Bénéfices d'une approche unifiée
-* Injection à la CDI des bundles
-* Testes unitaires
-* Rapport CSV des clés i18n
-* Application multi écran
-* Demo slideware : LesFurets.com mobile/desktop 
-* On enrichit encore un peu le pattern !
-* Deffered binding GWT kesako ?
-* Une nouvelle permutation GWT pour les clients mobiles
-* Injection des resources mobile et desktop avec GWT
-* Demo StockWatcher
-* Idée 1 : des tests JUnit pour l'orthographe
-* Idée 2 : un JSR pour les ResourceBundle 2.0
+ez18n-slides/ez18n_theorie.pptx
 
-Traduction via Excel & Crowd Sourcing: 15min (dimitri)
-------------------------------------------------------
 
-[ez18n_crowdsourcing.pptx](ez18n-slides/ez18n_crowdsourcing.pptx?raw=true "ez18n_crowdsourcing.pptx")
 
-[ez18n_crowdsourcing.pdf](ez18n-slides/ez18n_crowdsourcing.pdf?raw=true "ez18n_crowdsourcing.pdf")
+[![Build Status](https://buildhive.cloudbees.com/job/lesfurets/job/ez18n/badge/icon)](https://buildhive.cloudbees.com/job/lesfurets/job/ez18n/)
 
-* Besoin de gouvernance
-* Externaliser l'internalisation !
-* Vraiment pas satisfaisant
-* Not Invented Here (NIH)
-* Et arrive le crowd sourcing
-* Babili Crowdin.net
-* Aides à la traduction
-* Le sommet de l'iceberg
-
-QA : 15min
-----------
