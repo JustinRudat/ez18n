@@ -53,7 +53,7 @@ public class OldFashionSample {
     ResourceBundle rb = ResourceBundle.getBundle("myproperty");
     System.out.println("Bundle1 : " + rb.getString("key"));
 
-    rb.clearCache();
+    ResourceBundle.clearCache();
 
     p.setProperty("key", "the string 2");
 
