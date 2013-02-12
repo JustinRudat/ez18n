@@ -16,12 +16,28 @@
       <artifactId>ez18n-base</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.ez18n</groupId>
+      <artifactId>ez18n-spell6r</artifactId>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+      <resource>
+        <directory>${project.build.directory}/generated-sources/apt</directory>
+      </resource>
+    </resources>
+<!--
     <resources>
       <resource>
         <directory>src/main/java</directory>
@@ -42,6 +58,7 @@
         </includes>
       </resource>
     </resources>
+-->
     <testResources>
       <testResource>
         <directory>${project.build.directory}/generated-sources/apt-test</directory>
@@ -50,6 +67,7 @@
         </includes>
       </testResource>
     </testResources>
+
     <plugins>
       <plugin>
         <groupId>org.bsc.maven</groupId>
@@ -71,6 +89,7 @@
                 <processor>org.ez18n.apt.processor.DesktopBundlePropertiesProcessor</processor>
                 <processor>org.ez18n.apt.processor.CSVReportProcessor</processor>
                 <processor>org.ez18n.apt.processor.MetaInfServicesProcessor</processor>
+                <processor>org.ez18n.apt.processor.Spell6rMessagesProcessor</processor>
               </processors>
             </configuration>
           </execution>
@@ -92,6 +111,7 @@
           </execution>
         </executions>
       </plugin>
+      <!-- Self executable jar -->
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <version>2.3</version>

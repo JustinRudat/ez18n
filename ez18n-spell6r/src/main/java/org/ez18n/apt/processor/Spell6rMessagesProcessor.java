@@ -14,15 +14,21 @@ package org.ez18n.apt.processor;
 
 import static javax.lang.model.SourceVersion.RELEASE_6;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
+import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 
+import com.swabunga.spell.event.CapitalizedWordFinder;
+import com.swabunga.spell.event.StringWordTokenizer;
+import org.ez18n.Message;
+import org.ez18n.MessageBundle;
 import org.spell6r.Spell6rChecker;
 
 import com.swabunga.spell.event.SpellCheckEvent;
@@ -33,42 +39,37 @@ import com.swabunga.spell.event.SpellCheckListener;
 public class Spell6rMessagesProcessor extends AbstractProcessor {
     Spell6rChecker spell;
 
-    public Spell6rMessagesProcessor() {
-        spell = new Spell6rChecker("en_US");
-        spell.discoverExtendedDic();
-        spell.addSpellCheckListener(new SpellCheckListener() {
-            @Override
-            public void spellingError(SpellCheckEvent event) {
-                logMessage(Diagnostic.Kind.WARNING, "SPELLCHECK ERROR on word " + event.getInvalidWord() + " in "
-                                + spell.getCurrentSource());
-            }
-        });
-    }
+
+  public Spell6rMessagesProcessor() {
+    spell = new Spell6rChecker("en_US");
+    spell.discoverExtendedDic();
+    spell.addSpellCheckListener(new SpellCheckListener() {
+      @Override
+      public void spellingError(SpellCheckEvent event) {
+        String message = "SPELLCHECK ERROR on word " + event.getInvalidWord() + " in " + spell.getCurrentSource();
+        processingEnv.getMessager().printMessage(Diagnostic.Kind.ERROR, "SPELLCHECK : " + message);
+      }
+    });
+  }
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
 
-        /*
-         * final Set<? extends Element> elementsAnnotatedWith = roundEnv.getElementsAnnotatedWith(MessageBundle.class);
-         * for (Element element : elementsAnnotatedWith) { final List<? extends Element> enclosedElements =
-         * element.getEnclosedElements(); for (Element enclosedElement : enclosedElements) { final Message annotation =
-         * enclosedElement.getAnnotation(Message.class); checkMessage(element, enclosedElement, annotation.value());
-         * checkMessage(element, enclosedElement, annotation.mobile()); } }
-         */
-        return false;
+    final Set<? extends Element> elementsAnnotatedWith = roundEnv.getElementsAnnotatedWith(MessageBundle.class);
+    for (Element element : elementsAnnotatedWith) {
+      final List<? extends Element> enclosedElements = element.getEnclosedElements();
+      for (Element enclosedElement : enclosedElements) {
+        final Message annotation = enclosedElement.getAnnotation(Message.class);
+        checkMessage(element, enclosedElement, annotation.value());
+        checkMessage(element, enclosedElement, annotation.mobile());
+      }
     }
+    return false;
+  }
 
-    // private void checkMessage(Element element, Element enclosedElement, String message) {
-    // spell.setCurrentSource(element.toString() + "#" + enclosedElement.toString());
-    // spell.checkSpelling(new StringWordTokenizer(new CapitalizedWordFinder(message)));
-    // }
-
-    private void logMessage(Diagnostic.Kind messageKind, String message) {
-        if (processingEnv != null) {
-            processingEnv.getMessager().printMessage(messageKind, "SPELLCHECK : " + message);
-        } else {
-            System.out.println(message);
-        }
-    }
+    private void checkMessage(Element element, Element enclosedElement, String message) {
+     spell.setCurrentSource(element.toString() + "#" + enclosedElement.toString());
+     spell.checkSpelling(new StringWordTokenizer(new CapitalizedWordFinder(message)));
+   }
 
 }
