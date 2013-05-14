@@ -1,3 +1,5 @@
+[![Build Status](https://buildhive.cloudbees.com/job/lesfurets/job/ez18n/badge/icon)](https://buildhive.cloudbees.com/job/lesfurets/job/ez18n/)
+
 Ez18n
 =====
 
@@ -31,7 +33,4 @@ ez18n-slides/ez18n_hands_on.pptx
 
 ez18n-slides/ez18n_theorie.pptx
 
-
-
-[![Build Status](https://buildhive.cloudbees.com/job/lesfurets/job/ez18n/badge/icon)](https://buildhive.cloudbees.com/job/lesfurets/job/ez18n/)
 
